@@ -1,15 +1,55 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14490.70" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14490.21"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--Contador-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="btnPlus" title="Contador" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="calc_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="center" text="0" textAlignment="center" id="KJ4-vB-IDC">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="font" type="boldSystem" pointSize="44"/>
+                        </label>
+                        <group height="66" alignment="center" verticalAlignment="bottom" alpha="0.90000000000000002" spacing="3" id="Aw0-CM-5a1">
+                            <items>
+                                <button width="0.5" height="0.5" alignment="center" verticalAlignment="center" title="👆" id="Iev-c4-d1Z" userLabel="PlusBtn">
+                                    <accessibilityTraits key="accessibilityTraits" button="YES" playsSound="YES" updatesFrequently="YES"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="27"/>
+                                    <connections>
+                                        <action selector="btnPlus" destination="AgC-eL-Hgc" id="VzX-qZ-wxk"/>
+                                    </connections>
+                                </button>
+                                <button width="0.5" height="0.5" alignment="center" verticalAlignment="center" title="👇" id="ltD-OV-WJt" userLabel="MinusBtn">
+                                    <accessibilityTraits key="accessibilityTraits" button="YES" playsSound="YES" updatesFrequently="YES"/>
+                                    <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="font" type="boldSystem" pointSize="27"/>
+                                    <connections>
+                                        <action selector="minusButton" destination="AgC-eL-Hgc" id="DPe-Gk-NI4"/>
+                                    </connections>
+                                </button>
+                            </items>
+                        </group>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="Zerar" id="VwJ-fr-8xh">
+                            <connections>
+                                <action selector="resetCounter" destination="AgC-eL-Hgc" id="rSP-eB-ONy"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="label" destination="KJ4-vB-IDC" id="1CA-IN-pDG"/>
+                        <outlet property="orangeBtn" destination="Iev-c4-d1Z" id="u9I-L6-bLt"/>
+                    </connections>
+                </controller>
             </objects>
+            <point key="canvasLocation" x="118" y="50"/>
         </scene>
     </scenes>
 </document>

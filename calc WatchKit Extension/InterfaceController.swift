@@ -12,20 +12,42 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
-    override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
-        
-        // Configure interface objects here.
-    }
+    @IBOutlet weak var orangeBtn: WKInterfaceButton!
+    
+    
+    @IBOutlet weak var label: WKInterfaceLabel!
+    var someValue: Int = 0
+    
+
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        someValue = 0
     }
     
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
-    }
 
+    @IBAction func btnPlus() {
+        someValue += 1
+        self.updateLabel()
+        WKInterfaceDevice.current().play(.click)
+    }
+    
+    @IBAction func minusButton() {
+        someValue -= 1
+        self.updateLabel()
+        WKInterfaceDevice.current().play(.success)
+    }
+    
+    @IBAction func resetCounter() {
+        someValue = 0
+        self.updateLabel()
+        WKInterfaceDevice.current().play(.stop)
+    }
+    
+    func updateLabel(){
+        self.label.setText("\(someValue)")
+    }
 }
+
+
